@@ -10,6 +10,7 @@ s<!DOCTYPE html>
     <link rel="stylesheet" href="./assets/css/aos.css">
     <link rel="stylesheet" href="./assets/css/line-awesome.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body data-bs-spy="scroll" data-bs-target=".navbar">
@@ -402,26 +403,32 @@ s<!DOCTYPE html>
             </div>
         </section>
 
-        <script>
-    document.getElementById('contact').addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        // Obter os valores do formulário
-        var name = document.getElementById('name').value;
-        var email = document.getElementById('email').value;
-        var subject = document.getElementById('subject').value;
-        var message = document.getElementById('message').value;
-
-        // Construir o corpo do e-mail
-        var body = "Nome: " + name + "\n";
-        body += "Email: " + email + "\n";
-        body += "Assunto: " + subject + "\n";
-        body += "Mensagem: " + message;
-
-        // Enviar o e-mail usando o cliente de e-mail padrão do usuário
-        window.location.href = "mailto:jesseyangel@hotmail.com?subject=" + subject + "&body=" + body;
+    <script>
+    $(document).ready(function() {
+        $("contact").submit(function(event) {
+            event.preventDefault(); // Evita que o formulário seja enviado da maneira tradicional
+    
+            var nome = $("input[name='nome']").val();
+            var email = $("input[name='email']").val();
+            var assunto = $("input[name='assunto']").val();
+            var mensagem = $("textarea[name='mensagem']").val();
+    
+            $.ajax({
+                type: "POST",
+                url: "enviar_email.php", // Substitua pelo caminho correto do seu arquivo PHP
+                data: {
+                    nome: nome,
+                    email: email,
+                    assunto: assunto,
+                    mensagem: mensagem
+                },
+                success: function(response) {
+                    alert(response); // Exibe uma mensagem de sucesso ou erro
+                }
+            });
+        });
     });
-</script>
+    </script>
 
         <footer class="py-5 px-lg-5">
             <div class="container">
