@@ -402,6 +402,27 @@ s<!DOCTYPE html>
             </div>
         </section>
 
+        <script>
+    document.getElementById('contact-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Obter os valores do formulário
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+        var subject = document.getElementById('subject').value;
+        var message = document.getElementById('message').value;
+
+        // Construir o corpo do e-mail
+        var body = "Nome: " + name + "\n";
+        body += "Email: " + email + "\n";
+        body += "Assunto: " + subject + "\n";
+        body += "Mensagem: " + message;
+
+        // Enviar o e-mail usando o cliente de e-mail padrão do usuário
+        window.location.href = "mailto:jesseyangel@hotmail.com?subject=" + subject + "&body=" + body;
+    });
+</script>
+
         <footer class="py-5 px-lg-5">
             <div class="container">
                 <div class="row gy-4 justify-content-between">
