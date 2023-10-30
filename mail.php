@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $assunto = $_POST["assunto"];
     $mensagem = $_POST["mensagem"];
 
-    $para = "seu_email@example.com"; // Substitua pelo seu endereço de e-mail
+    $para = "jesseyangel@hotmail.com"; // Substitua pelo seu endereço de e-mail
     $assunto_email = "Novo contato: " . $assunto;
     $mensagem_email = "Nome: $nome\n";
     $mensagem_email .= "E-mail: $email\n";
